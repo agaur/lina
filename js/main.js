@@ -78,7 +78,7 @@
 
       $('body').on('click', '[data-action="openLibrary"]', function() {
           //This ideally should be done by global notification because library is not part of tabs
-          location.hash === "#library";
+          location.hash = "#library";
       });
     },
 
