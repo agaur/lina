@@ -6,7 +6,7 @@
   StorageManager,
   TabController;
 
-//StorageManager
+  //StorageManager
   StorageManager = function (){}
   StorageManager.prototype = {
     init: function(key, initialVal){
@@ -15,8 +15,12 @@
         localStorage.setItem(key, JSON.stringify(initialVal || {}));
       }
     },
+    reset: function() {
+      localStorage.removeItem(this.key);
+      this.init();
+    },
     get: function() {
-        return JSON.parse(localStorage.getItem(this.key));
+      return JSON.parse(localStorage.getItem(this.key));
     },
     set: function(updatedObj) {
       localStorage.setItem(this.key, JSON.stringify(updatedObj));
@@ -27,14 +31,14 @@
       this.set(storedItems);
     },
     remove: function(id) {
-        var storedItems = this.get();
-        delete storedItems[id];
-        this.set(storedItems);
+      var storedItems = this.get();
+      delete storedItems[id];
+      this.set(storedItems);
     }
   }
 
 
-// TabController
+  // TabController
   TabController = function () {};
   TabController.prototype = {
 
@@ -71,16 +75,22 @@
         e.stopPropagation();
         that.removeTab($(e.target));
       });
+
+      $('body').on('click', '[data-action="openLibrary"]', function() {
+          //This ideally should be done by global notification because library is not part of tabs
+          location.hash === "#library";
+      });
     },
 
     loadTabs: function() {
       var that = this,
-      tabs = that.storageManager.get();
-
-      _.forEach(tabs, function(obj) {
-        that.addTab(obj);
-      });
-      
+      tabs = _.toArray(that.storageManager.get()),
+      noOfTabs = tabs.length;
+      if(noOfTabs) {
+        $.notify({
+            message: 'You have ' + noOfTabs + ' unsaved searches. Please refer to the <a data-action="openLibrary">Library Page</a> for more info.'
+        });
+      }
     },
 
     init: function(options) {
@@ -95,9 +105,16 @@
     }
   }
 
+  function locationHashChanged() {
+      if(location.hash === "#library"){
+
+      }
+  }
+
   function init() {
     var tabController = new TabController();
     tabController.init();
+    window.onhashchange = locationHashChanged;
   }
 
   init();
