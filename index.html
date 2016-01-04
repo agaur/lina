@@ -55,6 +55,32 @@
 
   </div>
 
+  <!-- Modal -->
+  <div id="libraryModal" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="gridModalLabel">Recent Searches</h4>
+        </div>
+        <div class="modal-body">
+          <ul class="search-types">
+            <li class="selected" data-subtype="PINNED" class="selected">
+              <a href="javascript: void(0);">Pinned Search</a>
+            </li>
+              <li data-subtype="RECENT">
+                <a href="javascript: void(0);">Recent Search</a>
+              </li>
+          </ul>
+          <div class="modal-body-inner">
+            <form name="sprChannelSubTypeConfig" class="mdb-wiz-config form-horizontal">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Template for tab -->
   <script type="text/template" id="tabTemplate">
     <li class="nav-item">
@@ -69,7 +95,7 @@
 
   <!-- Template for tab content-->
   <script type="text/template" id="tabContent">
-      <div class="tab-pane" id="<%-tabId%>" role="tabpanel"> New Tab </div>
+    <div class="tab-pane" id="<%-tabId%>" role="tabpanel"> New Tab </div>
   </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="lib/bootstrap.min.js"></script>

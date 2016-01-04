@@ -3,6 +3,7 @@
   tabContentTemplate = _.template($('#tabContent').html()),
   jTabContents = $('.tab-content'),
   jTabs = $(".nav-tabs"),
+  jModal = $('#libraryModal'),
   StorageManager,
   TabController;
 
@@ -107,14 +108,24 @@
 
   function locationHashChanged() {
       if(location.hash === "#library"){
-
+        jModal.modal( 'show' );
+      } else {
+        jModal.modal( 'hide' );
       }
+  }
+
+  function initRouterEvents() {
+    window.onhashchange = locationHashChanged;
+    locationHashChanged();
+    jModal.on('hide.bs.modal', function() {
+      location.hash = '';
+    });
   }
 
   function init() {
     var tabController = new TabController();
     tabController.init();
-    window.onhashchange = locationHashChanged;
+    initRouterEvents();
   }
 
   init();
