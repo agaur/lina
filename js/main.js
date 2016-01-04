@@ -1,6 +1,7 @@
 (function(){
   var tabTemplate = _.template($('#tabTemplate').html()),
   tabContentTemplate = _.template($('#tabContent').html()),
+  listItemTemplate = _.template($('#listItem').html()),
   jTabContents = $('.tab-content'),
   jTabs = $(".nav-tabs"),
   jModal = $('#libraryModal'),
@@ -86,12 +87,17 @@
     loadTabs: function() {
       var that = this,
       tabs = _.toArray(that.storageManager.get()),
-      noOfTabs = tabs.length;
+      noOfTabs = tabs.length,
+      jEl = $();
       if(noOfTabs) {
         $.notify({
             message: 'You have ' + noOfTabs + ' unsaved searches. Please refer to the <a class="link" data-action="openLibrary">Library Page</a> for more info.'
         });
       }
+      _.forEach(tabs, function(tab, index){
+        jEl = jEl.add(listItemTemplate({index: index, id: tab.id, progress: Math.floor((Math.random() * 100))}));
+      });
+      $('#searchList').html(jEl);
     },
 
     init: function(options) {

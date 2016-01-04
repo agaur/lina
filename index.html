@@ -50,7 +50,9 @@
 
     <!-- Tab panes -->
     <div class="tab-content">
-      <div class="tab-pane active" id="defaultTab" role="tabpanel"> New Tab </div>
+      <div class="tab-pane active" id="defaultTab" role="tabpanel">
+        <input class="form-control form-control-lg" type="text" placeholder="Enter your search query here...">
+      </div>
     </div>
 
   </div>
@@ -83,28 +85,7 @@
                   <th>Progress</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Unnamed Search</td>
-                  <td>Pending</td>
-                  <td>00:07:40</td>
-                  <td><progress class="progress" value="25" max="100">25%</progress></td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Unnamed Search</td>
-                  <td>Pending</td>
-                  <td>02:07:40</td>
-                  <td><progress class="progress" value="10" max="100">10%</progress></td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Unnamed Search</td>
-                  <td>Pending</td>
-                  <td>00:12:40</td>
-                  <td><progress class="progress" value="89" max="100">89%</progress></td>
-                </tr>
+              <tbody id="searchList">
               </tbody>
             </table>
           </form>
@@ -113,7 +94,16 @@
     </div>
   </div>
 </div>
-
+<!-- Template for list item -->
+<script type="text/template" id="listItem">
+  <tr>
+    <th scope="row"><%-index%></th>
+    <td>Unnamed Search</td>
+    <td>Pending</td>
+    <td>00:12:40</td>
+    <td><progress class="progress" value="<%-progress%>" max="100"><%-progress%>%</progress></td>
+  </tr>
+</script>
 <!-- Template for tab -->
 <script type="text/template" id="tabTemplate">
   <li class="nav-item">
@@ -128,7 +118,9 @@
 
 <!-- Template for tab content-->
 <script type="text/template" id="tabContent">
-  <div class="tab-pane" id="<%-tabId%>" role="tabpanel"> New Tab </div>
+  <div class="tab-pane" id="<%-tabId%>" role="tabpanel">
+    <input class="form-control form-control-lg" type="text" placeholder="Enter your search query here...">
+  </div>
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="lib/bootstrap.min.js"></script>

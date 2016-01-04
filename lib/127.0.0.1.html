@@ -43,7 +43,7 @@
           </button>
         </a>
       </li>
-      
+
     <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="http://127.0.0.1:8080/#tab1" role="tab" aria-expanded="false">
         Unnamed Search
@@ -52,7 +52,7 @@
         </button>
       </a>
     </li>
-  
+
     <li class="nav-item">
       <a class="nav-link active" data-toggle="tab" href="http://127.0.0.1:8080/#tab2" role="tab" aria-expanded="true">
         Unnamed Search
@@ -61,7 +61,7 @@
         </button>
       </a>
     </li>
-  
+
     <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="http://127.0.0.1:8080/#tab3" role="tab" aria-expanded="false">
         Unnamed Search
@@ -78,15 +78,27 @@
     <!-- Tab panes -->
     <div class="tab-content">
       <div class="tab-pane" id="defaultTab" role="tabpanel" aria-expanded="false">...</div>
-    
+
       <div class="tab-pane" id="tab1" role="tabpanel" aria-expanded="false">...</div>
-  
+
       <div class="tab-pane active" id="tab2" role="tabpanel" aria-expanded="true">...</div>
-  
+
       <div class="tab-pane" id="tab3" role="tabpanel" aria-expanded="false">...</div>
   </div>
 
   </div>
+
+  <!-- Template for list item -->
+  <script type="text/template" id="listItem">
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#<%-tabId%>" role="tab">
+        Unnamed Search
+        <button type="button" class="close" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </a>
+    </li>
+  </script>
 
   <!-- Template for tab -->
   <script type="text/template" id="tabTemplate">
