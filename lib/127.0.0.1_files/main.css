@@ -1,0 +1,41 @@
+/*Nav bar styling*/
+.user-info {
+  color: rgba(0, 0, 0, .3);
+  padding: 5px 10px;
+  border-left: 1px solid #ddd;
+}
+
+#container{
+  margin: 1rem 0;
+}
+
+/*Tab styling*/
+.nav-item .close {
+  margin: -2px 0 0 5px;
+  outline: none;
+}
+.nav-item:hover .close {
+
+}
+.add {
+  -webkit-appearance: none;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: .2;
+  margin: 5px 10px;
+}
+
+.add:focus, .add:hover {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: .5;
+  outline: none;
+}

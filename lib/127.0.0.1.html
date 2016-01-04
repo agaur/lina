@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://127.0.0.1:8080/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="./127.0.0.1_files/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="./127.0.0.1_files/main.css">
+<style type="text/css"></style></head>
+<body>
+  <nav class="navbar navbar-light bg-faded">
+    <a class="navbar-brand" href="http://127.0.0.1:8080/#">Sumologic</a>
+    <ul class="nav navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="http://127.0.0.1:8080/#">Library</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="http://127.0.0.1:8080/#">Search</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="http://127.0.0.1:8080/#">Anamolies</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="http://127.0.0.1:8080/#">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="http://127.0.0.1:8080/#">Manage</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="http://127.0.0.1:8080/#">Help</a>
+      </li>
+    </ul>
+    <div class="user-info pull-xs-right">
+      Anup (Demo)
+    </div>
+  </nav>
+  <div class="container-fluid" id="container">
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="http://127.0.0.1:8080/#defaultTab" role="tab" aria-expanded="false">
+          Unnamed Search
+          <button type="button" class="close" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </a>
+      </li>
+      
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="http://127.0.0.1:8080/#tab1" role="tab" aria-expanded="false">
+        Unnamed Search
+        <button type="button" class="close" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </a>
+    </li>
+  
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="http://127.0.0.1:8080/#tab2" role="tab" aria-expanded="true">
+        Unnamed Search
+        <button type="button" class="close" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </a>
+    </li>
+  
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="http://127.0.0.1:8080/#tab3" role="tab" aria-expanded="false">
+        Unnamed Search
+        <button type="button" class="close" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </a>
+    </li>
+  <li>
+        <button href="#" class="add" data-action="addTab">+</button>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane" id="defaultTab" role="tabpanel" aria-expanded="false">...</div>
+    
+      <div class="tab-pane" id="tab1" role="tabpanel" aria-expanded="false">...</div>
+  
+      <div class="tab-pane active" id="tab2" role="tabpanel" aria-expanded="true">...</div>
+  
+      <div class="tab-pane" id="tab3" role="tabpanel" aria-expanded="false">...</div>
+  </div>
+
+  </div>
+
+  <!-- Template for tab -->
+  <script type="text/template" id="tabTemplate">
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#<%-tabId%>" role="tab">
+        Unnamed Search
+        <button type="button" class="close" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </a>
+    </li>
+  </script>
+
+  <!-- Template for tab content-->
+  <script type="text/template" id="tabContent">
+      <div class="tab-pane" id="<%-tabId%>" role="tabpanel">...</div>
+  </script>
+  <script src="./127.0.0.1_files/jquery.min.js"></script>
+  <script src="./127.0.0.1_files/bootstrap.min.js"></script>
+  <script src="./127.0.0.1_files/lodash.js"></script>
+  <script src="./127.0.0.1_files/main.js"></script>
+
+
+</body></html>
