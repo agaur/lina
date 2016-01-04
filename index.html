@@ -7,7 +7,7 @@
   <link rel="stylesheet" type="text/css" href="css/main.css"/>
 </head>
 <body>
-  <nav class="navbar navbar-light bg-faded">
+  <nav class="navbar navbar-dark bg-inverse">
     <a class="navbar-brand" href="#">Sumologic</a>
     <ul class="nav navbar-nav">
       <li class="nav-item">
@@ -68,39 +68,72 @@
             <li class="selected" data-subtype="PINNED" class="selected">
               <a href="javascript: void(0);">Pinned Search</a>
             </li>
-              <li data-subtype="RECENT">
-                <a href="javascript: void(0);">Recent Search</a>
-              </li>
+            <li data-subtype="RECENT">
+              <a href="javascript: void(0);">Recent Search</a>
+            </li>
           </ul>
           <div class="modal-body-inner">
-            <form name="sprChannelSubTypeConfig" class="mdb-wiz-config form-horizontal">
-            </form>
-          </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>NAME</th>
+                  <th>Status</th>
+                  <th>Elapsed Time</th>
+                  <th>Progress</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Unnamed Search</td>
+                  <td>Pending</td>
+                  <td>00:07:40</td>
+                  <td><progress class="progress" value="25" max="100">25%</progress></td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Unnamed Search</td>
+                  <td>Pending</td>
+                  <td>02:07:40</td>
+                  <td><progress class="progress" value="10" max="100">10%</progress></td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Unnamed Search</td>
+                  <td>Pending</td>
+                  <td>00:12:40</td>
+                  <td><progress class="progress" value="89" max="100">89%</progress></td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Template for tab -->
-  <script type="text/template" id="tabTemplate">
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#<%-tabId%>" role="tab">
-        Unnamed Search
-        <button data-action="removeTab" type="button" class="close" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </a>
-    </li>
-  </script>
+<!-- Template for tab -->
+<script type="text/template" id="tabTemplate">
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#<%-tabId%>" role="tab">
+      Unnamed Search
+      <button data-action="removeTab" type="button" class="close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </a>
+  </li>
+</script>
 
-  <!-- Template for tab content-->
-  <script type="text/template" id="tabContent">
-    <div class="tab-pane" id="<%-tabId%>" role="tabpanel"> New Tab </div>
-  </script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script src="lib/bootstrap.min.js"></script>
-  <script src="lib/bootstrap-notify.js"></script>
-  <script src="lib/lodash.js"></script>
-  <script src="js/main.js"></script>
+<!-- Template for tab content-->
+<script type="text/template" id="tabContent">
+  <div class="tab-pane" id="<%-tabId%>" role="tabpanel"> New Tab </div>
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="lib/bootstrap.min.js"></script>
+<script src="lib/bootstrap-notify.js"></script>
+<script src="lib/lodash.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

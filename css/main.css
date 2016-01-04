@@ -1,18 +1,35 @@
 /*Nav bar styling*/
+.navbar {
+  border-radius: 0;
+}
 .user-info {
-  color: rgba(0, 0, 0, .3);
+  color: rgba(255, 255, 255, .5);
   padding: 5px 10px;
   border-left: 1px solid #ddd;
 }
 
+.link {
+  cursor: pointer;
+}
 #container{
   margin: 1rem 0;
 }
 
 /*Tab styling*/
+.tab-content {
+    min-height: 500px;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-style: none solid solid;
+}
 .tab-pane {
   padding: 10px;
 }
+
+.nav-tabs .nav-link.active {
+  background: #fafafa;
+}
+
 .nav-item .close {
   margin: -2px 0 0 5px;
   outline: none;
@@ -87,4 +104,7 @@
   font-weight: normal;
   padding: 7px 0 7px 15px;
   text-decoration: none;
+}
+.modal-body-inner {
+    padding-left: 150px;
 }

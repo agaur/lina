@@ -89,7 +89,7 @@
       noOfTabs = tabs.length;
       if(noOfTabs) {
         $.notify({
-            message: 'You have ' + noOfTabs + ' unsaved searches. Please refer to the <a data-action="openLibrary">Library Page</a> for more info.'
+            message: 'You have ' + noOfTabs + ' unsaved searches. Please refer to the <a class="link" data-action="openLibrary">Library Page</a> for more info.'
         });
       }
     },
