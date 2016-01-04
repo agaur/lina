@@ -37,14 +37,15 @@
 // TabController
   TabController = function () {};
   TabController.prototype = {
-    addTab: function(jTarget){
-      var tabId = _.uniqueId('tab');
 
-      jTarget.closest('li').before(tabTemplate({tabId: tabId}));
+    addTab: function(options){
+      var tabId = (options || {}).id || _.uniqueId('tab');
+
+      $('.nav-item:last').after(tabTemplate({tabId: tabId}));
       jTabContents.append(tabContentTemplate({tabId: tabId}));
       $('.nav-tabs [href="#'+tabId+'"]').click();
 
-      this.storageManager.add(tabId, {name: 'test'});
+      this.storageManager.add(tabId, {id: tabId});
     },
 
     removeTab: function(jRemove){
@@ -72,6 +73,16 @@
       });
     },
 
+    loadTabs: function() {
+      var that = this,
+      tabs = that.storageManager.get();
+
+      _.forEach(tabs, function(obj) {
+        that.addTab(obj);
+      });
+      
+    },
+
     init: function(options) {
       var that = this,
       storageManager;
@@ -80,7 +91,7 @@
       storageManager.init('unsavedTabs');
 
       that.initEvents();
-
+      that.loadTabs();
     }
   }
 
