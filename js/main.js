@@ -3,36 +3,90 @@
   tabContentTemplate = _.template($('#tabContent').html()),
   jTabContents = $('.tab-content'),
   jTabs = $(".nav-tabs"),
+  StorageManager,
+  TabController;
 
-  updateListOfTabs = function (tabId, tabInfo, remove){
+//StorageManager
+  StorageManager = function (){}
+  StorageManager.prototype = {
+    init: function(key, initialVal){
+      this.key = key;
+      if(!localStorage.getItem(key)) {
+        localStorage.setItem(key, JSON.stringify(initialVal || {}));
+      }
+    },
+    get: function() {
+        return JSON.parse(localStorage.getItem(this.key));
+    },
+    set: function(updatedObj) {
+      localStorage.setItem(this.key, JSON.stringify(updatedObj));
+    },
+    add: function(id, val){
+      var storedItems = this.get();
+      storedItems[id] = val;
+      this.set(storedItems);
+    },
+    remove: function(id) {
+        var storedItems = this.get();
+        delete storedItems[id];
+        this.set(storedItems);
+    }
+  }
 
-  },
 
-  addTab = function(){
-    var tabId = _.uniqueId('tab');
-    $(this).closest('li').before(tabTemplate({tabId: tabId}));
-    jTabContents.append(tabContentTemplate({tabId: tabId}));
-    $('.nav-tabs [href="#'+tabId+'"]').click();
-  },
+// TabController
+  TabController = function () {};
+  TabController.prototype = {
+    addTab: function(jTarget){
+      var tabId = _.uniqueId('tab');
 
-  removeTab = function(jRemove){
-    var jAnchor = jRemove.closest('a');
-    $(jAnchor.attr('href')).remove();
-    jRemove.closest('.nav-item').remove();
-    $(".nav-tabs li").children('a').first().click();
-  },
+      jTarget.closest('li').before(tabTemplate({tabId: tabId}));
+      jTabContents.append(tabContentTemplate({tabId: tabId}));
+      $('.nav-tabs [href="#'+tabId+'"]').click();
 
-  initActionHandler = function() {
-    $('[data-action="addTab"]').on('click', addTab);
-    jTabs.on('click', '[data-action="removeTab"]', function(e){
-      e.preventDefault();
-      e.stopPropagation();
-      removeTab($(e.target));
-    });
+      this.storageManager.add(tabId, {name: 'test'});
+    },
+
+    removeTab: function(jRemove){
+      var jAnchor = jRemove.closest('a'),
+      jContentTab =   $(jAnchor.attr('href')),
+      id = jContentTab.attr('id');
+
+      jContentTab.remove();
+      jRemove.closest('.nav-item').remove();
+      $(".nav-tabs li").children('a').first().click();
+
+      this.storageManager.remove(id);
+    },
+
+    initEvents: function () {
+      var that = this;
+
+      $('[data-action="addTab"]').on('click', function(e) {
+        that.addTab($(e.target));
+      });
+      jTabs.on('click', '[data-action="removeTab"]', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        that.removeTab($(e.target));
+      });
+    },
+
+    init: function(options) {
+      var that = this,
+      storageManager;
+
+      that.storageManager = storageManager = new StorageManager();
+      storageManager.init('unsavedTabs');
+
+      that.initEvents();
+
+    }
   }
 
   function init() {
-    initActionHandler();
+    var tabController = new TabController();
+    tabController.init();
   }
 
   init();

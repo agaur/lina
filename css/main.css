@@ -10,6 +10,9 @@
 }
 
 /*Tab styling*/
+.tab-pane {
+  padding: 10px;
+}
 .nav-item .close {
   margin: -2px 0 0 5px;
   outline: none;
